@@ -15,41 +15,49 @@ const productos = [
     {
         "nombre": "Nube de algodón",
         "precio": 12.99,
-        "descripcion": "Este dulce producto tiene una textura suave y deliciosa que te transportará a un mundo de felicidad y dulzura."
+        "descripcion": "Este dulce producto tiene una textura suave y deliciosa que te transportará a un mundo de felicidad y dulzura.",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
         "nombre": "Estrella del mar de caramelo",
         "precio": 19.99,
-        "descripcion": "Este producto es una deliciosa mezcla de caramelo y chocolate con forma de estrella marina. ¡Es el regalo perfecto para los amantes del mar!"
+        "descripcion": "Este producto es una deliciosa mezcla de caramelo y chocolate con forma de estrella marina. ¡Es el regalo perfecto para los amantes del mar!",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
         "nombre": "Torre de cupcakes",
         "precio": 14.99,
-        "descripcion": "Este producto es una torre de cupcakes empilados uno encima de otro. Cada uno tiene un sabor diferente y están cubiertos con frosting y toppings deliciosos."
+        "descripcion": "Este producto es una torre de cupcakes empilados uno encima de otro. Cada uno tiene un sabor diferente y están cubiertos con frosting y toppings deliciosos.",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
         "nombre": "Galletas de unicornio",
         "precio": 9.99,
-        "descripcion": "Este producto es una caja de galletas en forma de unicornios. Cada galleta está cubierta con glaseado de colores brillantes y decorada con detalles mágicos."
+        "descripcion": "Este producto es una caja de galletas en forma de unicornios. Cada galleta está cubierta con glaseado de colores brillantes y decorada con detalles mágicos.",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
         "nombre": "Pastel de fresa con corazón",
         "precio": 22.99,
-        "descripcion": "Este producto es un pastel de fresa con forma de corazón. Está cubierto con frosting rojo y decorado con fresas y crema batida en la parte superior."
+        "descripcion": "Este producto es un pastel de fresa con forma de corazón. Está cubierto con frosting rojo y decorado con fresas y crema batida en la parte superior.",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
         "nombre": "Bolsa de dulces de arcoiris",
         "precio": 12.99,
-        "descripcion": "Este producto es una bolsa llena de dulces de colores brillantes en forma de estrellas, corazones y nubes. ¡Es una explosión de sabor y alegría!"
+        "descripcion": "Este producto es una bolsa llena de dulces de colores brillantes en forma de estrellas, corazones y nubes. ¡Es una explosión de sabor y alegría!",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
     {
         "nombre": "Caja de bombones de chocolate",
         "precio": 24.99,
-        "descripcion": "Este producto es una caja elegante llena de bombones de chocolate de diferentes sabores: vainilla, menta, fresa y nuez. ¡Es un regalo perfecto para los amantes del chocolate!"
+        "descripcion": "Este producto es una caja elegante llena de bombones de chocolate de diferentes sabores: vainilla, menta, fresa y nuez. ¡Es un regalo perfecto para los amantes del chocolate!",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     }, {
         "nombre": "Auto fugaz",
         "precio": 19.95,
-        "descripcion": "Este producto es una caja elegante llena de bombones de chocolate de diferentes sabores: vainilla, menta, fresa y nuez. ¡Es un regalo perfecto para los amantes del chocolate!"
+        "descripcion": "Este producto es una caja elegante llena de bombones de chocolate de diferentes sabores: vainilla, menta, fresa y nuez. ¡Es un regalo perfecto para los amantes del chocolate!",
+        "img": "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
     },
 ]
 
@@ -71,7 +79,7 @@ cartIco.addEventListener('click', () => {
     }
 });
 
-backMyOrder.addEventListener('click', () => toggle(asideDetail, mobileMenu));
+backMyOrder.addEventListener('click', () => toggle(asideDetail, [mobileMenu]));
 
 function toggle(totoggle, tohide) {
     totoggle.classList.toggle('hide')
@@ -84,16 +92,20 @@ function toggle(totoggle, tohide) {
     }
 }
 
-printProducts()
-function printProducts() {
-    productos.forEach(producto => {
+function printProducts(arr) {
+    arr.forEach(producto => {
+
+        let price = '$' + producto.precio;
+        let name = producto.name;
+        let img = producto.img;
+
         let div = document.createElement('div');
         div.className = 'product-card';
-        div.innerHTML = `<img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+        div.innerHTML = `<img src="${img}" alt="">
         <div class="product-info">
           <div>
-            <p>${producto.precio}</p>
-            <p>${producto.nombre}</p>
+            <p>${price}</p>
+            <p>${name}</p>
           </div>
           <figure>
             <img src="./icons/bt_add_to_cart.svg" alt="">
@@ -103,3 +115,5 @@ function printProducts() {
         cardsContainer.appendChild(div);
     });
 }
+
+printProducts(productos)
